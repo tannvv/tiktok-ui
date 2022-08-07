@@ -12,11 +12,15 @@ export const MENU_ITEMS = [
                     code: 'en',
                     title: 'English',
                     children: {
-                        title: 'title',
+                        title: 'English',
                         data: [
                             {
-                                code: 'kakakak',
-                                title: 'demo',
+                                code: 'unitedState',
+                                title: 'United state',
+                            },
+                            {
+                                code: 'unitedKingdom',
+                                title: 'United kingdom',
                             },
                         ],
                     },
