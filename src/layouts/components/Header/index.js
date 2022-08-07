@@ -11,57 +11,21 @@ import {
     faSignOut,
     faUser,
 } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
+import { faKeyboard } from '@fortawesome/free-regular-svg-icons';
+
+import config from '~/config';
 import Button from '~/components/Button';
 import styles from './Header.module.scss';
 import images from '~/assets/images';
 import Menu from '~/components/Popper/Menu';
-import { faKeyboard } from '@fortawesome/free-regular-svg-icons';
 import { InboxIcon, UploadIcon } from '~/components/Icons';
 import Image from '~/components/Image';
 import Search from '../Search';
+import { MENU_ITEMS as menuItems } from './menuItem';
 
 const cx = classNames.bind(styles);
-const MENU_ITEMS = [
-    {
-        icon: <FontAwesomeIcon icon={faEarthAsia} />,
-        title: 'English',
-        children: {
-            title: 'Language',
-            data: [
-                {
-                    code: 'en',
-                    title: 'English',
-                    children: {
-                        title: 'title',
-                        data: [
-                            {
-                                code: 'kakakak',
-                                title: 'demo',
-                            },
-                        ],
-                    },
-                },
-                {
-                    code: 'vi',
-                    title: 'Vietnamese',
-                },
-                {
-                    code: 'cn',
-                    title: 'Chinese',
-                },
-            ],
-        },
-    },
-    {
-        icon: <FontAwesomeIcon icon={faCircleQuestion} />,
-        title: 'Feedback and help',
-        to: '/feedback',
-    },
-    {
-        icon: <FontAwesomeIcon icon={faKeyboard} />,
-        title: 'Keyboard shortcuts',
-    },
-];
+const MENU_ITEMS = menuItems;
 
 function Header() {
     const currentUser = true;
@@ -99,7 +63,9 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <img src={images.logo} alt="TikTok" />
+                <Link to={config.routes.home} className={cx('logo-link')}>
+                    <Image src={images.logo} alt="TikTok" />
+                </Link>
                 <Search />
                 <div className={cx('actions')}>
                     {currentUser ? (
